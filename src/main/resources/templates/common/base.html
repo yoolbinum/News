@@ -36,32 +36,11 @@
                         <p>Top News</p>
                     </a>
                 </li>
-                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"
-                    th:classappend="(${active}=='foundItemsList')? 'active':''">
-                    <a class="nav-link" th:href="@{/items/found}">
-                        <i class="nc-icon nc-notes"></i>
-                        <p>Found Items</p>
-                    </a>
-                </li>
                 <li sec:authorize="hasAuthority('USER')" class="nav-item"
-                    th:classappend="(${active}=='userFoundItemsList')? 'active':''">
-                    <a class="nav-link" th:href="@{/items/userFound}">
+                    th:classappend="(${active}=='category')? 'active':''">
+                    <a class="nav-link" th:href="@{/news/category}">
                         <i class="nc-icon nc-notes"></i>
-                        <p>Your Found Items</p>
-                    </a>
-                </li>
-                <li sec:authorize="hasAnyAuthority('USER', 'ADMIN')" class="nav-item"
-                    th:classappend="(${active}=='itemForm')? 'active':''">
-                    <a class="nav-link" th:href="@{/items/add}">
-                        <i class="nc-icon nc-paper-2"></i>
-                        <p>Report Item Missing</p>
-                    </a>
-                </li>
-                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"
-                    th:classappend="(${active}=='itemsList')? 'active':''">
-                    <a class="nav-link" th:href="@{/items}">
-                        <i class="nc-icon nc-notes"></i>
-                        <p>All Item</p>
+                        <p>By Category</p>
                     </a>
                 </li>
             </ul>

@@ -44,7 +44,7 @@ public class ArticleController {
 
     @RequestMapping("/top/{id}")
     public String topNewsStoriesDetail(@PathVariable("id") long id, Model model) {
-        Article article =  articleService.topNews().get((int)id);
+        Article article = articleService.topNews().get((int) id);
         model.addAttribute("article", article);
         model.addAttribute("source", article.getSource());
         model.addAttribute("funName", "topNews");
@@ -52,7 +52,7 @@ public class ArticleController {
     }
 
     @RequestMapping("/category")
-    public String showCategoryNews(Model model, Authentication auth){
+    public String showCategoryNews(Model model, Authentication auth) {
         User user = userService.findByUsername(auth.getName());
 
         List<Article> business = new ArrayList<>();
@@ -63,23 +63,23 @@ public class ArticleController {
         List<Article> sports = new ArrayList<>();
         List<Article> technology = new ArrayList<>();
 
-        if(user.containCategory("business")){
+        //if (user.containCategory("business"))
             business = articleService.categoryNews("business");
-        }if(user.containCategory("entertainment")){
+        //if (user.containCategory("entertainment"))
             entertainment = articleService.categoryNews("entertainment");
-        }if(user.containCategory("general")){
+        //if (user.containCategory("general"))
             general = articleService.categoryNews("general");
-        }if(user.containCategory("health")){
+        //if (user.containCategory("health"))
             health = articleService.categoryNews("health");
-        }if(user.containCategory("science")){
+       // if (user.containCategory("science"))
             science = articleService.categoryNews("science");
-        }if(user.containCategory("sports")){
+        //if (user.containCategory("sports"))
             sports = articleService.categoryNews("sports");
-        }if(user.containCategory("technology")){
+        //if (user.containCategory("technology"))
             technology = articleService.categoryNews("technology");
-        }
+
         model.addAttribute("business", business);
-        model.addAttribute("entertainment",entertainment);
+        model.addAttribute("entertainment", entertainment);
         model.addAttribute("general", general);
         model.addAttribute("health", health);
         model.addAttribute("science", science);
@@ -90,13 +90,67 @@ public class ArticleController {
     }
 
     @RequestMapping("/category/business/{id}")
-    public String businessNewsDetail(@PathVariable("id") long id, Model model){
+    public String businessNewsDetail(@PathVariable("id") long id, Model model) {
         Article article = articleService.categoryNews("business").get((int) id);
         model.addAttribute("article", article);
         model.addAttribute("source", article.getSource());
-        model.addAttribute("funName", "topNews");
+        model.addAttribute("funName", "category");
         return articleDir + "detail";
     }
+
+    @RequestMapping("/category/entertainment/{id}")
+    public String entertainmentNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("entertainment").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+
+    @RequestMapping("/category/general /{id}")
+    public String generalNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("general").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+
+    @RequestMapping("/category/health/{id}")
+    public String healthNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("health").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+
+    @RequestMapping("/category/science/{id}")
+    public String scienceNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("science").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+    @RequestMapping("/category/sports/{id}")
+    public String sportsNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("sports").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+
+    @RequestMapping("/category/technology/{id}")
+    public String technologyNewsDetail(@PathVariable("id") long id, Model model) {
+        Article article = articleService.categoryNews("technology").get((int) id);
+        model.addAttribute("article", article);
+        model.addAttribute("source", article.getSource());
+        model.addAttribute("funName", "category");
+        return articleDir + "detail";
+    }
+
 
 
 }
