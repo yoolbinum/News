@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+<body>
+<div class="wrapper">
+    <div th:replace="common/base :: navbar(home)"></div>
+
+    <div class="main-panel">
+        <nav th:replace="common/base :: topNavbar"></nav>
+        <div class="content">
+            <div class="container-fluid">
+                <h3 sec:authorize="!hasAnyAuthority('USER','ADMIN')">
+                    You have not <strong>LOGGED IN</strong>
+                </h3>
+
+                <h3 sec:authorize="hasAuthority('USER')">
+                    You are an <strong>USER</strong>
+                </h3>
+
+                <h3 sec:authorize="hasAuthority('ADMIN')">
+                    You are an <strong>ADMIN</strong>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="common/base :: jslinks"></div>
+</body>
+</html>

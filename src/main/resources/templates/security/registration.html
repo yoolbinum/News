@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4 ">
+
+<head th:replace="common/base :: head"></head>
+<body>
+<div class="wrapper">
+    <div th:replace="common/base :: navbar(home)"></div>
+
+    <div class="main-panel">
+        <nav th:replace="common/base :: topNavbar"></nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">New User Registration</h4>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/register}" th:object="${user}" method="post">
+                                <div class="row">
+                                    <div class="col-md-11 pr-1">
+                                        <div class="form-group">
+                                            <label> User Name </label>
+                                            <strong>
+                                                    <span th:if="${#fields.hasErrors('username')}"
+                                                          th:errors="*{username}">Username Error</span>
+                                            </strong>
+                                            <input type="text" class="form-control" placeholder="Username"
+                                                   th:field="*{username}" name="username"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 pr-1">
+                                        <div class="form-group">
+                                            <label> Password </label>
+                                            <strong>
+                                                <span th:if="${#fields.hasErrors('password')}"
+                                                      th:errors="*{password}">Password Error</span>
+                                            </strong>
+                                            <input type="password" class="form-control" placeholder="Password"
+                                                   th:field="*{password}" name="password"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 pr-1">
+                                        <div class="form-group">
+                                            <label> First Name </label>
+                                            <strong>
+                                                    <span th:if="${#fields.hasErrors('firstName')}"
+                                                          th:errors="*{firstName}">First Name Error</span>
+                                            </strong>
+                                            <input type="text" class="form-control" placeholder="First Name"
+                                                   th:field="*{firstName}" name="firstName"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 pr-1">
+                                        <div class="form-group">
+                                            <label> Last Name </label>
+                                            <strong>
+                                                    <span th:if="${#fields.hasErrors('lastName')}"
+                                                          th:errors="*{lastName}">Last Name Error</span>
+                                            </strong>
+                                            <input type="text" class="form-control" placeholder="Last Name"
+                                                   th:field="*{lastName}" name="lastName"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 pr-1">
+                                        <button type="submit" class="btn btn-info btn-fill">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="common/base :: jslinks"></div>
+</body>
+</html>
+
+
+
+
+
+
+
