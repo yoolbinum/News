@@ -63,19 +63,19 @@ public class ArticleController {
         List<Article> sports = new ArrayList<>();
         List<Article> technology = new ArrayList<>();
 
-        //if (user.containCategory("business"))
+        if (user.containCategory("business"))
             business = articleService.categoryNews("business");
-        //if (user.containCategory("entertainment"))
+        if (user.containCategory("entertainment"))
             entertainment = articleService.categoryNews("entertainment");
-        //if (user.containCategory("general"))
+        if (user.containCategory("general"))
             general = articleService.categoryNews("general");
-        //if (user.containCategory("health"))
+        if (user.containCategory("health"))
             health = articleService.categoryNews("health");
-       // if (user.containCategory("science"))
+        if (user.containCategory("science"))
             science = articleService.categoryNews("science");
-        //if (user.containCategory("sports"))
+        if (user.containCategory("sports"))
             sports = articleService.categoryNews("sports");
-        //if (user.containCategory("technology"))
+        if (user.containCategory("technology"))
             technology = articleService.categoryNews("technology");
 
         model.addAttribute("business", business);
@@ -133,6 +133,7 @@ public class ArticleController {
         model.addAttribute("funName", "category");
         return articleDir + "detail";
     }
+
     @RequestMapping("/category/sports/{id}")
     public String sportsNewsDetail(@PathVariable("id") long id, Model model) {
         Article article = articleService.categoryNews("sports").get((int) id);
@@ -150,7 +151,6 @@ public class ArticleController {
         model.addAttribute("funName", "category");
         return articleDir + "detail";
     }
-
 
 
 }

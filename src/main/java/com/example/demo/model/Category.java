@@ -1,20 +1,26 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Category {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private long id;
 
+    @ManyToMany(mappedBy = "categories")
+    private Set<User> users;
+
+    @Column(unique=true)
     private String name;
 
     public Category() {
+        this.users = new HashSet<>();
     }
 
     public Category(String name) {
@@ -31,6 +37,14 @@ public class Category {
 
     public String getName() {
         return name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public void setName(String name) {

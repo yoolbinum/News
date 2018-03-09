@@ -2,23 +2,23 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Role {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    public long id;
+    private long id;
 
     @Column(unique=true)
     private String role;
 
     @ManyToMany(mappedBy="roles")
-    private Collection<User> users;
+    private Set<User> users;
 
     public Role() {
-        this.users = new ArrayList<>();
+        this.users = new HashSet<>();
     }
 
     public long getId() {
@@ -29,11 +29,11 @@ public class Role {
         this.id = id;
     }
 
-    public Collection<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

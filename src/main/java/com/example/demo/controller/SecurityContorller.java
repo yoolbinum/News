@@ -44,7 +44,9 @@ public class SecurityContorller {
             return  secDir + "registration";
         }else{
             userService.saveUser(user);
+            userService.initializeCategory(user);
         }
+
 
         return "redirect:/login" ;
     }

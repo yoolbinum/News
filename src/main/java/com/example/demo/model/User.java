@@ -10,7 +10,7 @@ import java.util.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
+    private long id;
 
     @NotEmpty
     private String password;
@@ -24,11 +24,11 @@ public class User {
     @NotEmpty
     private String lastName;
 
-    @OneToMany
-    private Set<Category> category = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Category> categories = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     public long getId() {
         return id;
@@ -71,29 +71,28 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Collection<Role> getRoles() {
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
-    public Set<Category> getCategory() {
-        return category;
-    }
-
-    public void setCategory(Set<Category> category) {
-        this.category = category;
-    }
-
-    public void addCategory(String category){
-        Category c = new Category(category);
-        this.category.add(c);
+    public void addCategory(Category category){
+        this.categories.add(category);
     }
 
     public boolean containCategory(String category){
-        for(Category c : this.category){
+        for(Category c : this.categories){
             if(c.getName().equalsIgnoreCase(category)){
                 return true;
             }
