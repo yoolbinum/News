@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="common/base :: head"></head>
+<body>
+<div class="wrapper">
+    <div th:replace="common/base :: navbar(${funName})"></div>
+    <div class="main-panel">
+        <nav th:replace="common/base :: topNavbar"></nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto">
+                                <div class="card">
+                                    <div class="header text-center">
+                                        <h4 class="title">Top 20 News</h4>
+                                        <br/>
+                                    </div>
+                                    <div class="content table-responsive table-upgrade">
+                                        <table class="table">
+                                            <thead>
+                                            <th>Title</th>
+                                            <th class="text-center">Published At</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="article : ${articles}">
+                                                <td th:text="${article.title}"></td>
+                                                <td th:text="${article.publishedAt}"></td>
+                                                <td>
+                                                    <a th:href="@{/news/top/{id}(id=${article.id})}"
+                                                       class="btn btn-round btn-fill btn-info">Detail</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="common/base :: jslinks"></div>
+</body>
+</html>
