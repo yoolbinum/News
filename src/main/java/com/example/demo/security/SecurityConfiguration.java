@@ -26,9 +26,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/register",
             "/h2-console/**",
             "/**",
+            "/account"
     };
 
     private static final String[] USER_MATCHERS = {
+            "/news/category/",
+            "/news/category/**",
+
     };
 
 
