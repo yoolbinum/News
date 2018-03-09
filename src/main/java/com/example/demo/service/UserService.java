@@ -28,6 +28,21 @@ public class UserService {
     public void saveUser(User user){
         user.setRoles(Arrays.asList(roleRepository.findByRole("USER")));
         userRepository.save(user);
+        user.addCategory("business");
+        userRepository.save(user);
+        user.addCategory("entertainment");
+        userRepository.save(user);
+        user.addCategory("general");
+        userRepository.save(user);
+        user.addCategory("health");
+        userRepository.save(user);
+        user.addCategory("science");
+        userRepository.save(user);
+        user.addCategory("sports");
+        userRepository.save(user);
+        user.addCategory("technology");
+        userRepository.save(user);
     }
+
 
 }

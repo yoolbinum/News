@@ -11,4 +11,9 @@ public class HomeController {
         return "homepage";
     }
 
+    @RequestMapping("/account")
+    public String account(){
+        return "model/user/account";
+    }
+
 }

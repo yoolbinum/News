@@ -3,9 +3,7 @@ package com.example.demo.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -25,6 +23,9 @@ public class User {
 
     @NotEmpty
     private String lastName;
+
+    @OneToMany
+    private Set<Category> category = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new HashSet<>();
@@ -76,5 +77,27 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Set<Category> category) {
+        this.category = category;
+    }
+
+    public void addCategory(String category){
+        Category c = new Category(category);
+        this.category.add(c);
+    }
+
+    public boolean containCategory(String category){
+        for(Category c : this.category){
+            if(c.getName().equalsIgnoreCase(category)){
+                return true;
+            }
+        }
+        return false;
     }
 }

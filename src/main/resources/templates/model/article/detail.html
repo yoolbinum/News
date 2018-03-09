@@ -3,7 +3,7 @@
 <head th:replace="common/base :: head"></head>
 <body>
 <div class="wrapper">
-    <div th:replace="common/base :: navbar('')"></div>
+    <div th:replace="common/base :: navbar(${funName})"></div>
     <div class="main-panel">
         <nav th:replace="common/base :: topNavbar"></nav>
         <div class="content">
@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-md-11 pr-1">
                                     <div th:if="${article.urlToImage != null}">
-                                        <img th:src="${article.urlToImage}" width="300" height="300"/>
+                                        <img th:src="${article.urlToImage}" width="300" />
                                     </div>
                                 </div>
                             </div>
