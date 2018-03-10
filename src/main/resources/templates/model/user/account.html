@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8">
-                        <div sec:authorize="!hasAnyAuthority('USER')">
+                        <div sec:authorize="!hasAuthority('USER')">
                             <h3>
                                 You have not <strong>LOGGED IN</strong>
                             </h3>
@@ -57,7 +57,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value=""/>
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${business}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -68,7 +68,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="checked"/>
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${entertainment}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -79,7 +79,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="checked"/>
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${general}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -90,7 +90,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" th:checked="checked"/>
+                                                                    <input class="form-check-input" type="checkbox" th:checked="${health}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -101,7 +101,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value=""/>
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${science}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -112,7 +112,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${sports}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -123,7 +123,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                    <input class="form-check-input" type="checkbox" value="" th:checked="${technology}? 'checked' : ''"/>
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>

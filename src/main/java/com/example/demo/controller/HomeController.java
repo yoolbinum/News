@@ -23,7 +23,13 @@ public class HomeController {
     public String account(Authentication auth, Model model){
         User user = userService.findByUsername(auth.getName());
         model.addAttribute("user", user);
-        model.addAttribute("categories", user.getCategories());
+        model.addAttribute("business", user.containCategory("business"));
+        model.addAttribute("entertainment", user.containCategory("entertainment"));
+        model.addAttribute("general", user.containCategory("general"));
+        model.addAttribute("health", user.containCategory("health"));
+        model.addAttribute("science", user.containCategory("science"));
+        model.addAttribute("sports", user.containCategory("sports"));
+        model.addAttribute("technology", user.containCategory("technology"));
         return "model/user/account";
     }
 
