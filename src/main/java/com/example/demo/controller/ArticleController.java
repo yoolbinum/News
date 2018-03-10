@@ -63,19 +63,19 @@ public class ArticleController {
         List<Article> sports = new ArrayList<>();
         List<Article> technology = new ArrayList<>();
 
-        if (user.containCategory("business"))
+        if (user.isBusiness())
             business = articleService.categoryNews("business");
-        if (user.containCategory("entertainment"))
+        if (user.isEntertainment())
             entertainment = articleService.categoryNews("entertainment");
-        if (user.containCategory("general"))
+        if (user.isGeneral())
             general = articleService.categoryNews("general");
-        if (user.containCategory("health"))
+        if (user.isHealth())
             health = articleService.categoryNews("health");
-        if (user.containCategory("science"))
+        if (user.isScience())
             science = articleService.categoryNews("science");
-        if (user.containCategory("sports"))
+        if (user.isSports())
             sports = articleService.categoryNews("sports");
-        if (user.containCategory("technology"))
+        if (user.isTechnology())
             technology = articleService.categoryNews("technology");
 
         model.addAttribute("business", business);

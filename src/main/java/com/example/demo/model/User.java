@@ -24,8 +24,19 @@ public class User {
     @NotEmpty
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Category> categories = new HashSet<>();
+    private boolean business =true;
+
+    private boolean entertainment =true;
+
+    private boolean general =true;
+
+    private boolean health =true;
+
+    private boolean science =true;
+
+    private boolean sports =true;
+
+    private boolean technology =true;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
@@ -71,14 +82,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -87,16 +90,59 @@ public class User {
         this.roles = roles;
     }
 
-    public void addCategory(Category category){
-        this.categories.add(category);
+    public boolean isBusiness() {
+        return business;
     }
 
-    public boolean containCategory(String category){
-        for(Category c : this.categories){
-            if(c.getName().equalsIgnoreCase(category)){
-                return true;
-            }
-        }
-        return false;
+    public void setBusiness(boolean business) {
+        this.business = business;
+    }
+
+    public boolean isEntertainment() {
+        return entertainment;
+    }
+
+    public void setEntertainment(boolean entertainment) {
+        this.entertainment = entertainment;
+    }
+
+    public boolean isGeneral() {
+        return general;
+    }
+
+    public void setGeneral(boolean general) {
+        this.general = general;
+    }
+
+    public boolean isHealth() {
+        return health;
+    }
+
+    public void setHealth(boolean health) {
+        this.health = health;
+    }
+
+    public boolean isScience() {
+        return science;
+    }
+
+    public void setScience(boolean science) {
+        this.science = science;
+    }
+
+    public boolean isSports() {
+        return sports;
+    }
+
+    public void setSports(boolean sports) {
+        this.sports = sports;
+    }
+
+    public boolean isTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(boolean technology) {
+        this.technology = technology;
     }
 }

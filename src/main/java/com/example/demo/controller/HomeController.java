@@ -6,7 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -23,14 +29,26 @@ public class HomeController {
     public String account(Authentication auth, Model model){
         User user = userService.findByUsername(auth.getName());
         model.addAttribute("user", user);
-        model.addAttribute("business", user.containCategory("business"));
-        model.addAttribute("entertainment", user.containCategory("entertainment"));
-        model.addAttribute("general", user.containCategory("general"));
-        model.addAttribute("health", user.containCategory("health"));
-        model.addAttribute("science", user.containCategory("science"));
-        model.addAttribute("sports", user.containCategory("sports"));
-        model.addAttribute("technology", user.containCategory("technology"));
         return "model/user/account";
+    }
+
+    @PostMapping("/account")
+    public String account(@Valid @ModelAttribute("user") User newUser, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "model/user/account";
+        }
+        User user = userService.findByUsername(newUser.getUsername());
+        user.setFirstName(newUser.getFirstName());
+        user.setLastName(newUser.getLastName());
+        user.setBusiness(newUser.isBusiness());
+        user.setEntertainment(newUser.isEntertainment());
+        user.setGeneral(newUser.isGeneral());
+        user.setHealth(newUser.isHealth());
+        user.setScience(newUser.isScience());
+        user.setSports(newUser.isSports());
+        user.setTechnology(newUser.isTechnology());
+        userService.saveUser(user);
+        return "redirect:/";
     }
 
 }

@@ -43,8 +43,7 @@ public class SecurityContorller {
         if(result.hasErrors()){
             return  secDir + "registration";
         }else{
-            userService.saveUser(user);
-            userService.initializeCategory(user);
+            userService.saveNewUser(user);
         }
 
 
